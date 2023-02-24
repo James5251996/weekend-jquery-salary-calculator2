@@ -30,6 +30,18 @@ console.log('inside the employee submit function')
     console.log('test to see if inputs are being pulled correctly:',
      submitFirstName, submitLastName, submitID, submitTitle, submitAnnualSalary);
 
+    // creating a new array to hold the input values of my submitted values
+    let enteredInputs = {
+        firstName: submitFirstName,
+        lastName: submitLastName,
+        id: submitID,
+        title: submitTitle,
+        annualSalary: submitAnnualSalary,
+    };
+
+    // now i need to take the input values and add it to the employeeSalaries array
+    employeeSalaries = enteredInputs
+
 }
 
 // need to create a delete function
