@@ -12,7 +12,12 @@ function onReady() {
     $('#submitBtn').on('click', employeeSubmit);
 
     //To-Do: create a delete listner.
-
+    $('#employeeTable').on('click', '#deleteBtn', deleteEmployee);
+    /*To-Do: 
+        create the delete function
+        create the remove inputs function.
+        create the function to calculate the monthly costs and to add/subtract them.
+    */
 };
 
 // need to create an submit function 
@@ -40,10 +45,46 @@ console.log('inside the employee submit function')
     };
 
     // now i need to take the input values and add it to the employeeSalaries array
-    employeeSalaries = enteredInputs
+    employeeSalaries.push(enteredInputs);
 
-}
+    // this is where i will call the render function to add the items when i submit to the table.
+    render();
+    // test to see if employeeSalaries gets updated.
+    console.log(employeeSalaries)
+
+};
 
 // need to create a delete function
+function deleteEmployee() {
+    
+}
 
-// need to create a render function
+// created a render function to add the items to the table.
+function render() {
+    // first i need to remove when is in the table already
+    $('#employeeTable').empty();
+
+    // now i will create what i need to add to the html to get the
+    // input values to show on the table.
+    // i also need to loop through the individual items in the employee salaries
+    // array so it will post one object at a time.
+    for (let employee of employeeSalaries) {
+        $('#employeeTable').append(`
+        <tr>
+            <td>${employee.firstName}</td>
+            <td>${employee.lastName}</td>
+            <td>${employee.id}</td>
+            <td>${employee.title}</td>
+            <td>${employee.annualSalary}</td>
+            <td>
+                <button id='deleteBtn'>
+                    Delete
+                </button>
+            </td>
+        </tr>
+        `)
+    }
+};
+
+
+
