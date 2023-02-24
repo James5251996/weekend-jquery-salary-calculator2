@@ -23,7 +23,7 @@ function onReady() {
 // need to create an submit function 
 function employeeSubmit() {
     //testing to see if my sumbit button works when i click it.
-console.log('inside the employee submit function')
+    console.log('inside the employee submit function')
     // creating my variables for my inputs for the employee
     let submitFirstName = $('#firstNameInput').val();
     let submitLastName = $('#lastNameInput').val();
@@ -33,31 +33,71 @@ console.log('inside the employee submit function')
 
     // this is a test to see if i click submit the values i inputed will log.
     console.log('test to see if inputs are being pulled correctly:',
-     submitFirstName, submitLastName, submitID, submitTitle, submitAnnualSalary);
+        submitFirstName, submitLastName, submitID, submitTitle, submitAnnualSalary);
 
-    // creating a new array to hold the input values of my submitted values
-    let enteredInputs = {
-        firstName: submitFirstName,
-        lastName: submitLastName,
-        id: submitID,
-        title: submitTitle,
-        annualSalary: submitAnnualSalary,
-    };
+    // creating an if statement so that if an input is missing it will
+    // not show and will give an alert.
 
-    // now i need to take the input values and add it to the employeeSalaries array
-    employeeSalaries.push(enteredInputs);
 
-    // this is where i will call the render function to add the items when i submit to the table.
-    render();
-    // test to see if employeeSalaries gets updated.
-    console.log(employeeSalaries)
+    if (submitFirstName && submitLastName && submitID && submitTitle && submitAnnualSalary) {
+        // creating a new array to hold the input values of my submitted values
+        let enteredInputs = {
+            firstName: submitFirstName,
+            lastName: submitLastName,
+            id: submitID,
+            title: submitTitle,
+            annualSalary: submitAnnualSalary,
+        };
+
+        // now i need to take the input values and add it to the employeeSalaries array
+        employeeSalaries.push(enteredInputs);
+
+        // this is where i will call the render function to add the items when i submit to the table.
+        render();
+        // test to see if employeeSalaries gets updated.
+        console.log(employeeSalaries)
+        // adding my reset inputs function to reset the inputs to blank.
+        resetInputFields();
+    } else {
+        alert('Missing Inputs')
+    }
 
 };
 
 // need to create a delete function
 function deleteEmployee() {
-    
-}
+    // need to create a new array varaible to replace the object we delete
+    let removeEmployee = [];
+
+    // a log to test the delete emplyee button.
+    console.log('inside the delete button.')
+
+    // need to create a variable to check the info inside of the table
+    const employeeToDelete = $(this).parent().siblings().first().text()
+
+    // creating a loop to go through the array of items in the employeeSalaries
+    // array and see if it matches the item we want to delete and then it will 
+    // delete that line in the table
+    for (employee of employeeSalaries) {
+        if (employee.firstName !== employeeToDelete) {
+            removeEmployee.push(employee)
+        }
+    }
+    employeeSalaries = removeEmployee;
+    render();
+
+};
+
+
+// creating a function to remove the inputs after you click submit.
+function resetInputFields() {
+    let submitFirstName = $('#firstNameInput').val('');
+    let submitLastName = $('#lastNameInput').val('');
+    let submitID = $('#idInput').val('');
+    let submitTitle = $('#titleInput').val('');
+    let submitAnnualSalary = $('#salaryInput').val('');
+};
+
 
 // created a render function to add the items to the table.
 function render() {
