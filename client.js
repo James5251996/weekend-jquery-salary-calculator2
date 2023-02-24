@@ -19,6 +19,17 @@ function onReady() {
 function employeeSubmit() {
     //testing to see if my sumbit button works when i click it.
 console.log('inside the employee submit function')
+    // creating my variables for my inputs for the employee
+    let submitFirstName = $('#firstNameInput').val();
+    let submitLastName = $('#lastNameInput').val();
+    let submitID = $('#idInput').val();
+    let submitTitle = $('#titleInput').val();
+    let submitAnnualSalary = $('#salaryInput').val();
+
+    // this is a test to see if i click submit the values i inputed will log.
+    console.log('test to see if inputs are being pulled correctly:',
+     submitFirstName, submitLastName, submitID, submitTitle, submitAnnualSalary);
+
 }
 
 // need to create a delete function
