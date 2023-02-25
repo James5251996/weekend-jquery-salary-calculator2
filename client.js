@@ -6,6 +6,7 @@ $(document).ready(onReady);
 // creating a salary array to keep track of all the salaries. 
 let employeeSalaries = [];
 
+
 // creating a function to host all of my listeners.
 function onReady() {
     //Creating a listner for when i click submit.
@@ -86,6 +87,7 @@ function deleteEmployee() {
     }
     employeeSalaries = removeEmployee;
     render();
+    subtractMonthlyCosts();
 
 };
 
@@ -99,7 +101,7 @@ function resetInputFields() {
     let submitAnnualSalary = $('#salaryInput').val('');
 };
 
-
+// created a funtion that will calcutlate the total monthly costs.
 function addMonthlyCosts () {
     // delcare a variable that calculates monlthy costs
     let totalAnnualSalaries = 0;
@@ -112,9 +114,22 @@ function addMonthlyCosts () {
     monthlyCosts = totalAnnualSalaries/12;
     // 
     $('#totalMonthlyCosts').empty().append(monthlyCosts);
+
+    if (monthlyCosts > 20000) {
+        $('#totalMonthlyCosts').css('color', 'red');
+    }
 }
 
-
+// creating a function that subtracts the total 
+function subtractMonthlyCosts() {
+    let totalAnnualSalaries = 0;
+    let monthlyCosts = 0;
+    for (let salary of employeeSalaries) {
+        totalAnnualSalaries = totalAnnualSalaries - Number(salary.annualSalary)
+    };
+    monthlyCosts = totalAnnualSalaries/12;
+    $('#totalMonthlyCosts').empty().append(monthlyCosts);
+}
 
 
 // created a render function to add the items to the table.
