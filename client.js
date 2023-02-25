@@ -126,7 +126,7 @@ function subtractMonthlyCosts() {
     let totalAnnualSalaries = 0;
     let monthlyCosts = 0;
     for (let salary of employeeSalaries) {
-         totalAnnualSalaries = Number(salary.annualSalary)
+         totalAnnualSalaries += Number(salary.annualSalary)
     };
     monthlyCosts = totalAnnualSalaries/12;
     $('#totalMonthlyCosts').empty().append(monthlyCosts);
