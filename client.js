@@ -14,8 +14,6 @@ function onReady() {
     //To-Do: create a delete listner.
     $('#employeeTable').on('click', '#deleteBtn', deleteEmployee);
     /*To-Do: 
-        create the delete function
-        create the remove inputs function.
         create the function to calculate the monthly costs and to add/subtract them.
     */
 };
@@ -54,6 +52,8 @@ function employeeSubmit() {
 
         // this is where i will call the render function to add the items when i submit to the table.
         render();
+        // adding in my montly costs function to run after everything has run in this function.
+        
         // test to see if employeeSalaries gets updated.
         console.log(employeeSalaries)
         // adding my reset inputs function to reset the inputs to blank.
@@ -61,6 +61,7 @@ function employeeSubmit() {
     } else {
         alert('Missing Inputs')
     }
+    addMonthlyCosts()
 
 };
 
@@ -97,6 +98,23 @@ function resetInputFields() {
     let submitTitle = $('#titleInput').val('');
     let submitAnnualSalary = $('#salaryInput').val('');
 };
+
+
+function addMonthlyCosts () {
+    // delcare a variable that calculates monlthy costs
+    let totalAnnualSalaries = 0;
+    let monthlyCosts = 0;
+    // create a thing to take the salary inputs and create a total annual salaries amount
+    for (let salary of employeeSalaries) {
+    totalAnnualSalaries = totalAnnualSalaries + Number(salary.annualSalary)
+    };
+    // take the total salaries and divide them by 12 to make it a monlthy cost.
+    monthlyCosts = totalAnnualSalaries/12;
+    // 
+    $('#totalMonthlyCosts').empty().append(monthlyCosts);
+}
+
+
 
 
 // created a render function to add the items to the table.
