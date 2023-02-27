@@ -116,9 +116,9 @@ function addMonthlyCosts () {
     $('#totalMonthlyCosts').empty().append(monthlyCosts);
 
     //this is an if statement with the condition that if the total costs are over 20,000 then the color changes to red
-    if (monthlyCosts > 20000) {
+    if (monthlyCosts >= 20000) {
         $('#totalMonthlyCosts').css('background-color', 'red');
-    }
+    };
 }
 
 // creating a function that subtracts the total 
@@ -130,6 +130,9 @@ function subtractMonthlyCosts() {
     };
     monthlyCosts = totalAnnualSalaries/12;
     $('#totalMonthlyCosts').empty().append(monthlyCosts);
+    if (monthlyCosts < 20000) {
+        $('#totalMonthlyCosts').css('background-color', 'lightblue');
+    };
 }
 
 
