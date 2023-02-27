@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <script src="./jquery.js"></script>
@@ -6,6 +7,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Salary Calculator</title>
 </head>
+
 <body>
     <h1>Salary Calculator</h1>
     <h2>Add Employee</h2>
@@ -23,19 +25,36 @@
             <input type="text" placeholder="Title" id="titleInput">
         </div>
         <div>
-        <input type="number" placeholder="Annual Salary" id="salaryInput">
+            <input type="number" placeholder="Annual Salary" id="salaryInput">
         </div>
     </div>
     <button id="submitBtn">Submit</button>
 
     <h2>Employees</h2>
 
-    <table id="employeeTable">
-        <tr>
-            <td>No Employees</td>
-        </tr>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Annual Salary</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="employeeTable">
+                <td>No Employees</td>
+                <td>Last Name</td>
+                <td>ID</td>
+                <td>Title</td>
+                <td>Salary</td>
+            </tr>
+        </tbody>
     </table>
 
     <h3>Total Monthy Costs: $<span id="totalMonthlyCosts">Monthly Costs</span></h3>
 </body>
+
 </html>
