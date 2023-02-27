@@ -12,7 +12,6 @@ h1 {
 }
 table {
     font-size: 20px;
-    border: 5px solid blue;
     width: 100%;
 }
 th {
@@ -25,6 +24,11 @@ td {
     padding: 10px 15px;
     border: 5px solid gold;
     background-color: lightgray;
+}
+input {
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px blue;
+    background-color: gold;
 }
 body {
     background-color: lightblue;

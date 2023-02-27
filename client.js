@@ -28,7 +28,7 @@ function employeeSubmit() {
     let submitLastName = $('#lastNameInput').val();
     let submitID = $('#idInput').val();
     let submitTitle = $('#titleInput').val();
-    let submitAnnualSalary = $('#salaryInput').val();
+    let submitAnnualSalary = Number($('#salaryInput').val());
 
     // this is a test to see if i click submit the values i inputed will log.
     console.log('test to see if inputs are being pulled correctly:',
@@ -108,12 +108,12 @@ function addMonthlyCosts () {
     let monthlyCosts = 0;
     // create a thing to take the salary inputs and create a total annual salaries amount
     for (let salary of employeeSalaries) {
-    totalAnnualSalaries = totalAnnualSalaries + Number(salary.annualSalary)
+    totalAnnualSalaries = totalAnnualSalaries + salary.annualSalary
     };
     // take the total salaries and divide them by 12 to make it a monlthy cost.
     monthlyCosts = totalAnnualSalaries/12;
     // 
-    $('#totalMonthlyCosts').empty().append(monthlyCosts.toFixed(2));
+    $('#totalMonthlyCosts').empty().html(monthlyCosts.toLocaleString('en-US'));
 
     //this is an if statement with the condition that if the total costs are over 20,000 then the color changes to red
     if (monthlyCosts >= 20000) {
@@ -126,10 +126,10 @@ function subtractMonthlyCosts() {
     let totalAnnualSalaries = 0;
     let monthlyCosts = 0;
     for (let salary of employeeSalaries) {
-         totalAnnualSalaries += Number(salary.annualSalary)
+         totalAnnualSalaries += salary.annualSalary
     };
     monthlyCosts = totalAnnualSalaries/12;
-    $('#totalMonthlyCosts').empty().append(monthlyCosts.toFixed(2));
+    $('#totalMonthlyCosts').empty().html(monthlyCosts.toLocaleString('en-US'));
     if (monthlyCosts < 20000) {
         $('#totalMonthlyCosts').css('background-color', 'lightblue');
     };
@@ -152,7 +152,7 @@ function render() {
             <td>${employee.lastName}</td>
             <td>${employee.id}</td>
             <td>${employee.title}</td>
-            <td>${employee.annualSalary}</td>
+            <td>$${employee.annualSalary.toLocaleString('en-US')}</td>
             <td>
                 <button id='deleteBtn'>
                     Delete
