@@ -13,6 +13,7 @@ h1 {
 table {
     font-size: 20px;
     border: 5px solid blue;
+    width: 100%;
 }
 th {
     border: 5px solid gold;
